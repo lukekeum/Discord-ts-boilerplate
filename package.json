@@ -1,0 +1,32 @@
+{
+  "name": "discoord-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lukekeum/discoord-bot",
+  "author": "lukekeum <lukekeum11@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production nodemon --exec ts-node src/index.ts -e ts",
+    "dev": "cross-env NODE_ENV=develop nodemon --exec ts-node src/index.ts -e ts"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.2",
+    "discord.js": "^12.3.1",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.14",
+    "@types/node": "^14.11.2",
+    "@typescript-eslint/eslint-plugin": "^4.3.0",
+    "@typescript-eslint/parser": "^4.3.0",
+    "eslint": "^7.10.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.4.2",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.1.2",
+    "ts-jest": "^26.4.1",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
+  }
+}
