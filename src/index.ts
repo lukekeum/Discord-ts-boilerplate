@@ -10,6 +10,15 @@ const prefix = process.env.PREFIX || '::';
 const commandFiles = readdirSync('./src/commands').filter((file) =>
   file.endsWith('.ts'),
 );
+const eventFiles = readdirSync('./src/events').filter((file) =>
+  file.endsWith('.ts'),
+);
+
+for (const file of eventFiles) {
+  const eventClass = require(`./events/${file}`);
+  const { eventType, execute } = eventClass.class;
+  client.on(eventType, execute);
+}
 
 for (const file of commandFiles) {
   const commandClass = require(`./commands/${file}`);
