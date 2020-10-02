@@ -19,3 +19,19 @@ export class CommandManager {
     return;
   }
 }
+
+/*
+사용방법
+
+@Command("명령어( string[] 형태로 적어도 됨 )")
+class 클래스명 extends CommandManager <- 버그방지 {
+  execute({ message, args }: ICommand) {
+    
+  }
+}
+
+module.exports = {
+  class: class;
+}
+
+*/

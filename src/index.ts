@@ -23,7 +23,7 @@ for (const file of commandFiles) {
   }
 }
 
-client.on('message', (message) => {
+client.on('message', async (message) => {
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
   const args = message.content.slice(prefix.length).trim().split(/ +/);
@@ -34,7 +34,7 @@ client.on('message', (message) => {
   }
 
   try {
-    commands.get(command)({ message, args });
+    await commands.get(command)({ message, args });
   } catch (err) {
     console.error(err);
     message.reply('명령어를 처리하는 도중 오류가 발생했습니다');
