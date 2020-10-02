@@ -21,7 +21,7 @@ export class CommandManager {
 }
 
 /*
-useage
+usage
 
 @Command("command( you can use as string[] also )")
 class (classname) extends CommandManager <- optional {
@@ -31,7 +31,7 @@ class (classname) extends CommandManager <- optional {
 }
 
 module.exports = {
-  class: class;
+  class: new (classname)();
 }
 
 */
