@@ -21,10 +21,10 @@ export class CommandManager {
 }
 
 /*
-사용방법
+useage
 
-@Command("명령어( string[] 형태로 적어도 됨 )")
-class 클래스명 extends CommandManager <- 버그방지 {
+@Command("command( you can use as string[] also )")
+class (classname) extends CommandManager <- optional {
   execute({ message, args }: ICommand) {
     
   }

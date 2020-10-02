@@ -1,9 +1,9 @@
 import { Command, CommandManager, ICommand } from '../lib/CommandManager';
 
-@Command('안녕')
+@Command('ping')
 class testCommand extends CommandManager {
   execute({ message, args }: ICommand) {
-    message.reply('안녕');
+    message.reply('pong');
   }
 }
 

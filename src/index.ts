@@ -37,7 +37,7 @@ client.on('message', async (message) => {
     await commands.get(command)({ message, args });
   } catch (err) {
     console.error(err);
-    message.reply('명령어를 처리하는 도중 오류가 발생했습니다');
+    message.reply('An error occurred while processing the command.');
   }
 });
 
