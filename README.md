@@ -26,6 +26,7 @@ Make sure put your discord bot token inside .env and .env.development file befor
 You can declare your own command easily in this boilerplate
 
 > Warning
+
 > You should make your command file inside the `src/commands` folder
 
 **src/commands/example.ts**
@@ -50,6 +51,7 @@ put your command inside that array ( aliases also ).
 You can also declare your own events easily in this boilerplate
 
 > Warning
+
 > You should make your event file inside `src/events` folder
 
 **src/events/example.ts**
@@ -67,3 +69,5 @@ module.exports = {
   class: new example(),
 };
 ```
+
+put your event-type inside that `@DiscordEvent()`.
