@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "cross-env NODE_ENV=production nodemon --exec ts-node src/index.ts -e ts",
-    "dev": "cross-env NODE_ENV=develop nodemon --exec ts-node src/index.ts -e ts"
+    "dev": "cross-env NODE_ENV=development nodemon --exec ts-node src/index.ts -e ts"
   },
   "dependencies": {
     "cross-env": "^7.0.2",
