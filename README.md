@@ -25,13 +25,14 @@ Make sure put your discord bot token inside .env and .env.development file befor
 
 You can declare your own command easily in this boilerplate
 
-> Warning
-
+> **Warning**
 > You should make your command file inside the `src/commands` folder
 
-**src/commands/example.ts**
+**src/commands/hello.ts**
 
 ```javascript
+import { Command, CommandManager, ICommand } from '../lib/CommandManager';
+
 @Command(['hello', 'h1'])
 class testCommand extends CommandManager {
   execute({ message, args }: ICommand) {
@@ -39,9 +40,7 @@ class testCommand extends CommandManager {
   }
 }
 
-module.exports = {
-  class: new testCommand(),
-};
+export default testCommand;
 ```
 
 put your command inside that array ( aliases also ).
@@ -50,24 +49,24 @@ put your command inside that array ( aliases also ).
 
 You can also declare your own events easily in this boilerplate
 
-> Warning
-
+> **Warning**
 > You should make your event file inside `src/events` folder
 
 **src/events/example.ts**
 
 ```javascript
+import { MessageReaction, User } from 'discord.js';
+import { DiscordEvent, EventHandler } from '../lib/EventManager';
+
 @DiscordEvent('messageReactionAdd')
-class example {
+class example extends EventHandler {
   execute(messageReact: MessageReaction, user: User) {
     console.log(messageReaction.count);
     console.log(user.username);
   }
 }
 
-module.exports = {
-  class: new example(),
-};
+export default example;
 ```
 
 put your event-type inside that `@DiscordEvent()`.

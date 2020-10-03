@@ -14,42 +14,45 @@ const eventFiles = readdirSync('./src/events').filter((file) =>
   file.endsWith('.ts'),
 );
 
-for (const file of eventFiles) {
-  const eventClass = require(`./events/${file}`);
-  const { eventType, execute } = eventClass.class;
-  client.on(eventType, execute);
-}
-
 for (const file of commandFiles) {
-  const commandClass = require(`./commands/${file}`);
-  const { command, execute } = commandClass.class;
+  const commandClass = require(`./commands/${file}`).default;
+  const { command, execute } = new commandClass();
   if (typeof command === 'string') {
     commands.set(command, execute);
     continue;
   }
-  for (const cmd of commandClass.class.command) {
-    commands.set(cmd, commandClass.class.execute);
+  for (const cmd of command) {
+    commands.set(cmd, execute);
   }
 }
 
-client.on('message', async (message) => {
-  if (!message.content.startsWith(prefix) || message.author.bot) return;
-
-  const args = message.content.slice(prefix.length).trim().split(/ +/);
-  const command = args.shift().toLowerCase();
-
-  if (!commands.has(command)) {
-    return;
-  }
-
-  try {
-    await commands.get(command)({ message, args });
-  } catch (err) {
-    console.error(err);
-    message.reply('An error occurred while processing the command.');
-  }
+client.on('ready', () => {
+  console.log('Bot is running');
 });
 
-client.login(token).then(() => {
-  console.log(`Bot is running!`);
-});
+// client.on('message', async (message) => {
+//   if (!message.content.startsWith(prefix) || message.author.bot) return;
+
+//   const args = message.content.slice(prefix.length).trim().split(/ +/);
+//   const command = args.shift().toLowerCase();
+
+//   if (!commands.has(command)) {
+//     return;
+//   }
+
+//   try {
+//     await commands.get(command)({ message, args });
+//   } catch (err) {
+//     console.error(err);
+//     message.reply('An error occurred while processing the command.');
+//   }
+// });
+
+for (const file of eventFiles) {
+  const eventClass = require(`./events/${file}`).default;
+  const { eventType, execute } = new eventClass();
+  console.log(eventType, execute);
+  client.on(eventType, execute);
+}
+
+client.login(token);

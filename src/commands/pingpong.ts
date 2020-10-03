@@ -7,6 +7,4 @@ class testCommand extends CommandManager {
   }
 }
 
-module.exports = {
-  class: new testCommand(),
-};
+export default testCommand;

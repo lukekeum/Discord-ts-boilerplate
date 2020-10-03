@@ -1,14 +1,12 @@
 import { MessageReaction, User } from 'discord.js';
-import { DiscordEvent } from '../lib/EventManager';
+import { DiscordEvent, EventHandler } from '../lib/EventManager';
 
 @DiscordEvent('messageReactionAdd')
-class example {
+class example extends EventHandler {
   execute(messageReaction: MessageReaction, user: User) {
     console.log(messageReaction.count);
     console.log(user.username);
   }
 }
 
-module.exports = {
-  class: new example(),
-};
+export default example;

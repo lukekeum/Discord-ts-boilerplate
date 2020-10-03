@@ -1,13 +1,13 @@
 import { Message } from 'discord.js';
-import { DiscordEvent } from '../lib/EventManager';
+import { DiscordEvent, EventHandler } from '../lib/EventManager';
 
 @DiscordEvent('messageDelete')
-class deleteEvent {
+class deleteEvent extends EventHandler {
   execute(message: Message) {
-    console.log(`${message.author} deleted message: ${message.content}`);
+    console.log(
+      `${message.author.username} deleted message: ${message.content}`,
+    );
   }
 }
 
-module.exports = {
-  class: new deleteEvent(),
-};
+export default deleteEvent;
