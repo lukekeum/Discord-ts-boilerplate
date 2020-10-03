@@ -30,23 +30,23 @@ client.on('ready', () => {
   console.log('Bot is running');
 });
 
-// client.on('message', async (message) => {
-//   if (!message.content.startsWith(prefix) || message.author.bot) return;
+client.on('message', async (message) => {
+  if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-//   const args = message.content.slice(prefix.length).trim().split(/ +/);
-//   const command = args.shift().toLowerCase();
+  const args = message.content.slice(prefix.length).trim().split(/ +/);
+  const command = args.shift().toLowerCase();
 
-//   if (!commands.has(command)) {
-//     return;
-//   }
+  if (!commands.has(command)) {
+    return;
+  }
 
-//   try {
-//     await commands.get(command)({ message, args });
-//   } catch (err) {
-//     console.error(err);
-//     message.reply('An error occurred while processing the command.');
-//   }
-// });
+  try {
+    await commands.get(command)({ message, args });
+  } catch (err) {
+    console.error(err);
+    message.reply('An error occurred while processing the command.');
+  }
+});
 
 for (const file of eventFiles) {
   const eventClass = require(`./events/${file}`).default;
