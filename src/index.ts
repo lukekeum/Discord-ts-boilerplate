@@ -26,6 +26,12 @@ for (const file of commandFiles) {
   }
 }
 
+for (const file of eventFiles) {
+  const eventClass = require(`./events/${file}`).default;
+  const { eventType, execute } = new eventClass();
+  client.on(eventType, execute);
+}
+
 client.on('ready', () => {
   console.log('Bot is running');
 });
@@ -47,12 +53,5 @@ client.on('message', async (message) => {
     message.reply('An error occurred while processing the command.');
   }
 });
-
-for (const file of eventFiles) {
-  const eventClass = require(`./events/${file}`).default;
-  const { eventType, execute } = new eventClass();
-  console.log(eventType, execute);
-  client.on(eventType, execute);
-}
 
 client.login(token);
