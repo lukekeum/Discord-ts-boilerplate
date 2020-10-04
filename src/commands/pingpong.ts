@@ -1,7 +1,7 @@
 import { Command, CommandManager, ICommand } from '../lib/CommandManager';
 
 @Command('ping')
-class testCommand extends CommandManager {
+class testCommand implements CommandManager {
   execute({ message, args }: ICommand) {
     message.reply('pong');
   }

@@ -6,10 +6,8 @@ export function DiscordEvent(name: events) {
   };
 }
 
-export class EventHandler {
-  execute(...args: any[]) {
-    return;
-  }
+export interface EventHandler {
+  execute(...args: any[]): void;
 }
 
 /* 

@@ -14,10 +14,8 @@ export function Command(command: ICmd) {
   };
 }
 
-export class CommandManager {
-  execute({ message, args }: ICommand) {
-    return;
-  }
+export interface CommandManager {
+  execute({ message, args }: ICommand): void;
 }
 
 /*
