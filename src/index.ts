@@ -42,14 +42,20 @@ client.on('message', async (message) => {
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
   const args = message.content.slice(prefix.length).trim().split(/ +/);
-  const command = args.shift().toLowerCase();
+  const command = args?.shift()?.toLowerCase() || '';
 
   if (!commands.has(command)) {
+    // Add Your help Command
+    /*
+    const help = new (Help Classname)();
+    help.execute();
+    */
     return;
   }
 
   try {
-    await commands.get(command)({ message, args });
+    const func = commands.get(command) || function () {};
+    await func({ message, args });
   } catch (err) {
     console.error(err);
     message.reply('An error occurred while processing the command.');
