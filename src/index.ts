@@ -16,6 +16,7 @@ const eventFiles = readdirSync('./src/events').filter((file) =>
 
 for (const file of commandFiles) {
   const commandClass = require(`./commands/${file}`).default;
+  if (typeof commandClass === 'function') continue;
   const { command, execute } = new commandClass();
   if (typeof command === 'string') {
     commands.set(command, execute);
@@ -28,6 +29,7 @@ for (const file of commandFiles) {
 
 for (const file of eventFiles) {
   const eventClass = require(`./events/${file}`).default;
+  if (typeof eventClass === 'function') continue;
   const { eventType, execute } = new eventClass();
   client.on(eventType, execute);
 }
